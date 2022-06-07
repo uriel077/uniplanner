@@ -1,0 +1,28 @@
+
+<br><br>
+<div class="center">
+    <table color="primary">
+        <thead>
+            <tr>
+                <th class="table-cols" *ngFor="let col of tableColumns">{{ col }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr app-courses-row *ngFor="let row of curriculumDetails" [curriculumDetails]="row" [courses]="courses"></tr>
+
+            <tr>
+                <th attr.colspan="{{ tableColumns.length }}" style="text-align: center">
+                    <app-add-course-row (addEvent)="add()"></app-add-course-row>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <button mat-raised-button (click)="save()">שמירה</button>
+                </th>
+                <th *ngIf="curriculumDetails">
+                    ממוצע : {{average | number : '.2-2'}}
+                </th>
+            </tr>
+        </tbody>
+    </table>
+</div>
